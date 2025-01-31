@@ -1,0 +1,88 @@
+.App {
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.expenses-scrolling {
+  height: 200px;
+  overflow-y: scroll;
+  border-bottom: 1px solid black;
+}
+
+/* Style for the list of expenses */
+.expense-list {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.expense-list .expense-amount {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.expense-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.expense-item button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.expense-item button:hover {
+  background-color: #d32f2f;
+}
+
+/* Style for the form itself (unchanged from before) */
+.expense-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(25% - 20px);
+}
+
+.form-field label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-field input,
+.form-field select {
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 20px;
+}
+
+/* Style for the totals section */
+.totals {
+  position: absolute;
+  right: 20px;
+  font-size: 18px;
+}
+
+.totals p {
+  margin: 5px 0;
+}
