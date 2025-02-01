@@ -48,7 +48,6 @@ const ExpenseImport = ({ onImport }) => {
 
     const handleImport = () => {
         const selectedData = rows.filter((_, index) => selectedRows.has(index));
-        console.log('====> handleImport', selectedData);
         const expenseData = [];
         selectedData.forEach(row => {
             const label = row[0];
@@ -63,8 +62,12 @@ const ExpenseImport = ({ onImport }) => {
                 expenseData.push(expenseItem);
             }
         })
-        console.log('====> expenseData', expenseData);
         onImport(expenseData);
+
+        // Clear the table and reset selections
+        setRows([]);              // Clear the rows data
+        setSelectedRows(new Set());// Clear the selected rows
+        setLastSelectedIndex(null); // Optionally clear the last selected index
     };
 
     return (

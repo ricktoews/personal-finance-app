@@ -90,7 +90,7 @@ function ExpenseForm({ expenses, setExpenses }) {
             {expenses.map((expense, index) => (
               <tr key={index} className="expense-item">
                 <td>{expense.label}</td>
-                <td className="expense-amount">{expense.amount}</td>
+                <td className="expense-amount">${expense.amount.toFixed(2)}</td>
                 <td>{expense.necessity}</td>
                 <td>{expense.frequency}</td>
                 <td>

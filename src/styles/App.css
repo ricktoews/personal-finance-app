@@ -80,7 +80,10 @@ button {
 .totals {
   position: absolute;
   right: 20px;
-  font-size: 18px;
+}
+
+.totals td:nth-child(2) {
+  text-align: right;
 }
 
 .totals p {
