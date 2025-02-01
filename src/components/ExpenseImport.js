@@ -74,7 +74,7 @@ const ExpenseImport = ({ onImport }) => {
         <div>
             <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
             {rows.length > 0 && (
-                <table style={{ borderCollapse: "collapse", marginTop: "10px" }}>
+                <table onMouseDown={event => event.preventDefault()} style={{ borderCollapse: "collapse", marginTop: "10px" }}>
                     <tbody>
                         {rows.map((row, index) => (
                             <tr
