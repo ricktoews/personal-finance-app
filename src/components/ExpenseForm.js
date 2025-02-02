@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 function ExpenseForm({ expenses, setExpenses }) {
   // State for form fields
@@ -6,6 +7,7 @@ function ExpenseForm({ expenses, setExpenses }) {
   const [amount, setAmount] = useState('');
   const [necessity, setNecessity] = useState('fixed');
   const [frequency, setFrequency] = useState('monthly');
+  const [preTax, setPreTax] = useState(false);
 
   // State for accumulated expenses
   const [editingIndex, setEditingIndex] = useState(null);
@@ -22,6 +24,7 @@ function ExpenseForm({ expenses, setExpenses }) {
             amount: parseFloat(amount),
             necessity,
             frequency,
+            preTax,
           };
         }
         return expense;
@@ -36,6 +39,7 @@ function ExpenseForm({ expenses, setExpenses }) {
         amount: parseFloat(amount),
         necessity,
         frequency,
+        preTax,
       };
 
       setExpenses([...expenses, newExpense]);
@@ -46,6 +50,7 @@ function ExpenseForm({ expenses, setExpenses }) {
     setAmount('');
     setNecessity('fixed');
     setFrequency('monthly');
+    setPreTax(false);
   };
 
   const handleEdit = (index) => {
@@ -54,6 +59,7 @@ function ExpenseForm({ expenses, setExpenses }) {
     setAmount(expenseToEdit.amount.toString());
     setNecessity(expenseToEdit.necessity);
     setFrequency(expenseToEdit.frequency);
+    setPreTax(expenseToEdit.preTax);
     setEditingIndex(index); // Mark that we're editing this item
   };
 
@@ -66,7 +72,7 @@ function ExpenseForm({ expenses, setExpenses }) {
   const calculateTotals = () => {
     let monthlyTotal = 0;
     let yearlyTotal = 0;
-
+    console.log('====> calculateTotals, expenses', expenses);
     expenses.forEach((expense) => {
       if (expense.frequency === 'monthly') {
         monthlyTotal += expense.amount;
@@ -93,6 +99,7 @@ function ExpenseForm({ expenses, setExpenses }) {
                 <td className="expense-amount">${expense.amount.toFixed(2)}</td>
                 <td>{expense.necessity}</td>
                 <td>{expense.frequency}</td>
+                <td>{expense.preTax ? 'Yes' : 'No'}</td>
                 <td>
                   <button onClick={() => handleEdit(index)}>Edit</button>
                   <button onClick={() => handleDelete(index)}>Delete</button>
@@ -142,6 +149,17 @@ function ExpenseForm({ expenses, setExpenses }) {
             <option value="yearly">Yearly</option>
           </select>
         </div>
+        <div className="form-field">
+          <label><br />
+            <input
+              type="checkbox"
+              checked={preTax}
+              onChange={(e) => setPreTax(e.target.checked)}
+            />
+            Pre-tax
+          </label>
+        </div>
+
         <button type="submit">
           {editingIndex !== null ? 'Update Expense' : 'Add Expense'}
         </button>

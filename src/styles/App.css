@@ -46,7 +46,7 @@ h1 {
 /* Style for the form itself (unchanged from before) */
 .expense-form {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
 }
 

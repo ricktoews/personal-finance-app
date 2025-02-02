@@ -11,13 +11,9 @@ function App() {
     setExpenses([...expenses, ...importedExpenses]);
   };
 
-
-  // Calculate total monthly and yearly expenses
-  const totalMonthly = expenses.reduce((acc, curr) => acc + curr.amount, 0);
-
   return (
     <div className="App">
-      <Totals totalMonthly={totalMonthly}></Totals>
+      <Totals expenses={expenses}></Totals>
       <h1>Personal Finance Tracker</h1>
       <ExpenseForm expenses={expenses} setExpenses={setExpenses} />
 

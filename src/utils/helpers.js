@@ -1,5 +1,5 @@
 const formatCurrency = (amount) => {
-    return amount.toLocaleString('en-US');
+    return amount.toFixed(2).toLocaleString('en-US');
 
 }
 
